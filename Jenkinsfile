@@ -52,12 +52,12 @@ pipeline {
                 }
             }
         }
-//        stage('Push Docker Image') {
-//            steps {
-//                bat 'docker push dcedannoruwa/test-app'
-//
-//            }
-//        }
+        stage('Push Docker Image') {
+            steps {
+                bat 'docker push dcedannoruwa/test-app'
+
+            }
+        }
 //        stage('Deploy To Tomcat') {
 //            steps {
 //                bat 'ADD target/test-app.war test-app.war'
