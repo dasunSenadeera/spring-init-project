@@ -14,16 +14,20 @@ pipeline {
             }
             stage ('Testing Stage') {
                 steps {
-                    withMaven(maven : 'apache-maven-3.6.3') {
-                        bat'mvn test'
-                    }
+                        withEnv(["JAVA_HOME=${ tool name: 'java8', type: 'jdk' }"]) {
+                            withMaven(maven : 'apache-maven-3.6.3') {
+                                bat'mvn test'
+                            }
+                         }
                 }
             }
             stage ('Install Stage') {
                 steps {
-                    withMaven(maven : 'apache-maven-3.6.3') {
-                        bat'mvn install'
-                     }
+                        withEnv(["JAVA_HOME=${ tool name: 'java8', type: 'jdk' }"]) {
+                            withMaven(maven : 'apache-maven-3.6.3') {
+                                bat'mvn install'
+                             }
+                        }
                 }
             }
             stage('Build Docker Image'){
