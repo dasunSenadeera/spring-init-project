@@ -37,10 +37,9 @@ pipeline {
             }
             stage('Push Docker Image'){
               steps {
-                 withCredentials([string(credentialsId: 'docker-pw', variable: 'docker-pwd')]) {
-                    bat "docker login -u dcedannoruwa -p ${docker-pwd}"
+
                     bat 'docker PUSH dcedannoruwa/test-app .'
-                 }
+
                }
             }
         }
