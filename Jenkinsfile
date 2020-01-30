@@ -33,7 +33,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // bat 'docker build -t dcedannoruwa/test-app .'
-                bat 'docker build -f Dockerfile -t dcedannoruwa/test-app .'
+                bat 'docker build -t dcedannoruwa/test-app .'
 
 
             }
@@ -52,12 +52,18 @@ pipeline {
                 }
             }
         }
-        stage('Push Docker Image') {
-            steps {
-                bat 'docker push dcedannoruwa/test-app'
-
-            }
-        }
+//        stage('Push Docker Image') {
+//            steps {
+//                bat 'docker push dcedannoruwa/test-app'
+//
+//            }
+//        }
+//        stage('Deploy To Tomcat') {
+//            steps {
+//                bat 'ADD target/test-app.war test-app.war'
+//
+//            }
+//        }
 
     }
 }
