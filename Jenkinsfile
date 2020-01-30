@@ -4,7 +4,7 @@ pipeline {
             stage ('Compile Stage') {
 
                 steps {
-                     withEnv(["JAVA_HOME=${ tool name: 'java8', type: 'jdk' }") {
+                     withEnv(["JAVA_HOME=${ tool name: 'java8', type: 'jdk' }"]) {
 
                          withMaven(maven : 'apache-maven-3.6.3') {
                             bat'mvn clean compile'
