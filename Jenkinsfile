@@ -45,13 +45,13 @@ pipeline {
 
             }
         }
-//        stage('Docker Login') {
-//            steps {
-//                withCredentials([string(credentialsId: 'docker-pw', variable: 'docker-pwd')]) {
-//                    bat "docker login -u dcedannoruwa -p ${docker - pwd}"
-//                }
-//            }
-//        }
+        stage('Docker Login') {
+            steps {
+                withCredentials([string(credentialsId: 'docker-pw', variable: 'docker-pwd')]) {
+                    bat "docker login -u dcedannoruwa -p ${docker-pwd}"
+                }
+            }
+        }
         stage('Push Docker Image') {
             steps {
                 bat 'docker push dcedannoruwa/test-app'
