@@ -54,7 +54,7 @@ pipeline {
 //        }
         stage('Push Docker Image') {
             steps {
-                bat 'docker PUSH dcedannoruwa/test-app .'
+                bat 'docker push dcedannoruwa/test-app .'
 
             }
         }
