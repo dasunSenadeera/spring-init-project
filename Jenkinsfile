@@ -32,14 +32,23 @@ pipeline {
             }
             stage('Build Docker Image'){
               steps {
-                 bat 'docker build -t dcedannoruwa/test-app .'
+                // bat 'docker build -t dcedannoruwa/test-app .'
+                 bat 'docker build -f Dockerfile -t dcedannoruwa/test-app .'
+
+
               }
             }
-            stage('Push Docker Image'){
+            stage('view Docker Images'){
               steps {
 
-                    bat 'docker PUSH dcedannoruwa/test-app .'
+                    bat 'docker images'
 
+               }
+            }
+            stage('Push Docker Image'){
+               steps {
+
+                  bat 'docker run -p 8089:8089 test-app'
                }
             }
         }
