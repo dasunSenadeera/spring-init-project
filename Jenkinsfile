@@ -45,11 +45,18 @@ pipeline {
 
                }
             }
-            stage('Push Docker Image'){
-               steps {
-
-                  bat 'docker run -p 8089:8089 test-app'
-               }
+           stage('Docker Login'){
+              steps {
+                 withCredentials([string(credentialsId: 'docker-pw', variable: 'docker-pwd')]) {
+                    bat "docker login -u dcedannoruwa -p ${docker-pwd}"
+                 }
+              }
             }
+             stage('Push Docker Image'){
+                   steps {
+                         bat 'docker PUSH dcedannoruwa/test-app .'
+
+                    }
+             }
         }
 }
