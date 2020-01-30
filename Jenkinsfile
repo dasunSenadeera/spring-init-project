@@ -23,18 +23,18 @@ pipeline {
                      }
                 }
             }
-           // stage('Build Docker Image'){
-             // steps {
-            //     bat 'docker build -t dcedannoruwa/test-app .'
-            //  }
-          //  }
-          //  stage('Push Docker Image'){
-          //    steps {
-           //      withCredentials([string(credentialsId: 'docker-pw', variable: 'docker-pwd')]) {
-            //        bat "docker login -u dcedannoruwa -p ${docker}"
-            //        bat 'docker PUSH dcedannoruwa/test-app .'
-            //     }
-             //  }
-           // }
+            stage('Build Docker Image'){
+              steps {
+                 bat 'docker build -t dcedannoruwa/test-app .'
+              }
+            }
+            stage('Push Docker Image'){
+              steps {
+                 withCredentials([string(credentialsId: 'docker-pw', variable: 'docker-pwd')]) {
+                    bat "docker login -u dcedannoruwa -p ${docker}"
+                    bat 'docker PUSH dcedannoruwa/test-app .'
+                 }
+               }
+            }
         }
 }
