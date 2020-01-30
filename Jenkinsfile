@@ -23,5 +23,11 @@ pipeline {
                      }
                 }
             }
+            stage('Build Docker Image'){
+                bat 'docker build -t dcedannoruwa/test-app .'
+            }
+            stage('Push Docker Image'){
+                bat 'docker PUSH -t dcedannoruwa/test-app .'
+            }
         }
 }
