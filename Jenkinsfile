@@ -24,10 +24,14 @@ pipeline {
                 }
             }
             stage('Build Docker Image'){
-                bat 'docker build -t dcedannoruwa/test-app .'
+                 bat 'docker build -t dcedannoruwa/test-app .'
             }
             stage('Push Docker Image'){
-                bat 'docker PUSH -t dcedannoruwa/test-app .'
+                 withCredentials([string(credentialsId: 'docker-pw', variable: 'docker-pwd')]) {
+                    bat "docker login -u dcedannoruwa -p ${docker}"
+                    bat 'docker PUSH dcedannoruwa/test-app .'
+                 }
+
             }
         }
 }
